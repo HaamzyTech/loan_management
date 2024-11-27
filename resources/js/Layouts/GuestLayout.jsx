@@ -5,10 +5,12 @@ export default function GuestLayout({ children }) {
     return (
         <div className="grid grid-cols-1 md:grid-cols-12 min-h-screen bg-gray-100">
             <div className="hidden  col-span-6 md:flex flex-col sm:justify-center items-center bg-white">
-                <div>
-                    <Link href="/">
+                <div className='w-2/3'>
+                    {/* <Link href="/">
                         <ApplicationLogo className="h-20 w-20 fill-current text-gray-500" />
-                    </Link>
+                    </Link> */}
+                    <img src='images/money_pile.jpg' alt="JLP Loans" />
+                    <h2 className="font-bold text-center text-xl">JLP Loans</h2>
                 </div>
             </div>
             

@@ -94,6 +94,15 @@ export default function Login({ status, canResetPassword }) {
                         Log in
                     </PrimaryButton>
                 </div>
+                <div className="mt-4 flex items-center justify-center">
+                    <p className="text-gray-600">Don't have an account</p>
+                    <Link
+                        href={route('register')}
+                        className="rounded-md px-3 py-2 text-indigo-600 ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                    >
+                        Register Now
+                    </Link>
+                </div>
             </form>
         </GuestLayout>
     );
