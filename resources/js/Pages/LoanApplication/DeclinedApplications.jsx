@@ -5,11 +5,9 @@ import TextInput from '@/Components/TextInput';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import { Plus } from 'lucide-react';
-import { useState } from 'react';
-import LoanApplicationForm from './partials/LoanApplicationForm';
+import ApplicationsTable from './partials/ApplicationsTable';
 
-const ApproveApplications = () => {
-    const [createAccount,setCreateAccount] = useState(false)
+const DeclinedApplications = ({applications}) => {
   return (
     <AuthenticatedLayout
               header={
@@ -25,30 +23,30 @@ const ApproveApplications = () => {
                   placeholder="search"
                 />
                 <div>
-                  <PrimaryButton className="space-x-2" onClick={setCreateAccount}>
+                  {/* <PrimaryButton className="space-x-2" onClick={setCreateAccount}>
                     <Plus/> 
                     <span>Apply for Loan</span>
-                  </PrimaryButton>
+                  </PrimaryButton> */}
                   
                 </div>
               </div>
 
-              <Modal show={createAccount} onClose={setCreateAccount}>
+              {/* <Modal show={createAccount} onClose={setCreateAccount}>
                 <div className="bg-white rounded-lg p-8">
                   <LoanApplicationForm />
                 </div>
-              </Modal>
+              </Modal> */}
 
               <div className="pt-8">
                 <h2 className="text-lg font-medium text-gray-900">
-                   Approve Applications
+                   Declined Applications
                 </h2>
                 
-                <Table user_applications={applications}/>
+                <ApplicationsTable user_applications={applications} />
               </div>
             </div>
           </AuthenticatedLayout>
-  );
+  )
 }
 
-export default ApproveApplications
+export default DeclinedApplications

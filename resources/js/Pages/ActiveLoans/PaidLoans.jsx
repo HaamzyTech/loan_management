@@ -9,14 +9,13 @@ import Loans from './partials/Loans';
 import LoanRepaymentForm from './partials/LoanRepaymentForm';
 import PaymentHistory from './partials/PaymentHistory';
 
-const ActiveLoans = ({loans}) => {
-    
-  const [repayment,setRepayment] = useState(false)
-  const [history, setHistory] = useState(false)
-  const [selectedLoan, setSelectedLoan] = useState(null);
- 
-  return (
-    <AuthenticatedLayout
+const PaidLoans = ({loans}) => {
+
+    const [repayment,setRepayment] = useState(false)
+    const [history, setHistory] = useState(false)
+    const [selectedLoan, setSelectedLoan] = useState(null);
+    return (
+        <AuthenticatedLayout
               header={
                   <h2 className="text-xl font-semibold leading-tight text-gray-800">
                       Loans
@@ -26,22 +25,22 @@ const ActiveLoans = ({loans}) => {
             <Head title='Users' />
 
             <div className="bg-white shadow sm:rounded-lg sm:p-8">
-              <div className="flex items-center justify-between">
-                <SearchInput placeholder={"Search by name or id"} route_path={'application.search'}/>
-                <div>
-                  {/* <PrimaryButton className="space-x-2" onClick={setModal}>
-                    <Plus/> 
-                    <span>Add User</span>
-                  </PrimaryButton> */}
-                  
+                <div className="flex items-center justify-between">
+                    <SearchInput placeholder={"Search by name or id"} route_path={'application.search'}/>
+                    <div>
+                        {/* <PrimaryButton className="space-x-2" onClick={setModal}>
+                            <Plus/> 
+                            <span>Add User</span>
+                        </PrimaryButton> */}
+                        
+                    </div>
                 </div>
-              </div>
 
-              <Modal show={repayment} onClose={setRepayment}>
+              {/* <Modal show={repayment} onClose={setRepayment}>
                 <div className="bg-white rounded-lg p-8">
                     <LoanRepaymentForm credit={selectedLoan} />
                 </div>
-              </Modal>
+              </Modal> */}
 
               <Modal show={history} onClose={setHistory}>
                 <div className="bg-white rounded-lg p-8">
@@ -56,8 +55,8 @@ const ActiveLoans = ({loans}) => {
                 <Loans loans={loans} setRepayment={setRepayment} setSelectedLoan={setSelectedLoan} setHistory={setHistory} />
               </div>
             </div>
-          </AuthenticatedLayout>
-  )
+        </AuthenticatedLayout>
+    )
 }
 
-export default ActiveLoans
+export default PaidLoans

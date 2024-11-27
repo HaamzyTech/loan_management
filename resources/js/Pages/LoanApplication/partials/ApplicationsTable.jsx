@@ -8,6 +8,7 @@ import EditAccountForm from './EditAccountForm'
 import { Inertia } from '@inertiajs/inertia';
 import SubmittedActions from './SubmittedActions'
 import ReviewedActions from './ReviewedActions'
+import ApplicationStatus from '@/Components/ApplicationStatus'
 
 const ApplicationsTable = ({user_applications,status}) => {
     const [createAccount,setCreateAccount] = useState(false)
@@ -41,29 +42,31 @@ const ApplicationsTable = ({user_applications,status}) => {
                 </tr>
             </thead>
             <tbody className="">
-                {user_applications && user_applications.map((record)=>(
+                {user_applications && user_applications?.map((record)=>(
                     <tr className="border hover:bg-slate-50" key={record.id}>
                         <td className="p-4">
-                            {record.user?.individual_profile && 
-                                `${record.user.individual_profile.firstName } 
+                            {record?.user?.individual_profile && 
+                                `${record?.user?.individual_profile?.firstName } 
                                  ${record?.user?.individual_profile?.otherName ? 
                                     record?.user?.individual_profile?.otherName : ""
-                                } ${record.user.individual_profile.lastName}`}
-                            {record.user?.business_profile && record.user.business_profile !== null && 
-                                `${record.user?.business_profile?.business_name}`
+                                } ${record?.user?.individual_profile?.lastName}`}
+                            {record?.user?.business_profile && record?.user?.business_profile !== null && 
+                                `${record?.user?.business_profile?.business_name}`
                             }
                         </td>
                         <td className="p-4">
-                            {record.user?.individual_profile && 
-                                `${record.user.individual_profile.nrc }
+                            {record?.user?.individual_profile && 
+                                `${record?.user?.individual_profile.nrc }
                             `}
-                            {record.user?.business_profile && record.user.business_profile !== null && 
-                                `${record.user?.business_profile?.registration_number}`
+                            {record?.user?.business_profile && record?.user?.business_profile !== null && 
+                                `${record?.user?.business_profile?.registration_number}`
                             }
                         </td>
-                        <td className="p-4">{formatDate(record.created_at)}</td>
-                        <td className="p-4">{record.amount}</td>
-                        <td className="p-4">{record.status}</td>
+                        <td className="p-4">{formatDate(record?.created_at)}</td>
+                        <td className="p-4">{record?.amount}</td>
+                        <td className="p-4">
+                            <ApplicationStatus status={record?.status} />
+                        </td>
                         <td className="p-4">
                             {status && status === 'submitted' && (
                                 <SubmittedActions 
@@ -131,13 +134,13 @@ const ApplicationsTable = ({user_applications,status}) => {
                     </div>
                     <div className='grid grid-cols-2 border p-2 rounded-b-md'>
                        <strong>AMOUNT: </strong>
-                       <p>K {record && record.amount}</p>
+                       <p>K {record && record?.amount}</p>
                     </div>
                     <p className='mt-4'>you are about to approve this loan application are you sure you want to proceed?</p>
                     <div className="flex items-center space-x-4 mt-4">
                         <PrimaryButton
                             onClick={()=>{
-                                handleApprove(record.id)
+                                handleApprove(record?.id)
                             }}
                             className="bg-green-500"
                         >
@@ -157,23 +160,23 @@ const ApplicationsTable = ({user_applications,status}) => {
                     <div className='grid grid-cols-2 border p-2 rounded-t-md'>
                        <strong>APPLICANT: </strong>
                        <p className="capitalize">
-                            {record && record.user?.individual_profile && 
-                                `${record.user.individual_profile.firstName } 
+                            {record && record?.user?.individual_profile && 
+                                `${record?.user.individual_profile.firstName } 
                                     ${record?.user?.individual_profile?.otherName ? 
                                     record?.user?.individual_profile?.otherName : ""
-                                } ${record.user.individual_profile.lastName}`}
-                            {record && record.user?.business_profile && record.user.business_profile !== null && 
-                                `${record.user?.business_profile?.business_name}`
+                                } ${record?.user.individual_profile?.lastName}`}
+                            {record && record?.user?.business_profile && record?.user?.business_profile !== null && 
+                                `${record?.user?.business_profile?.business_name}`
                             }
                        </p>
                     </div>
                     <div className='grid grid-cols-2 border p-2'>
                        <strong>APPLICANT-ID: </strong>
                        <p>
-                            {record && record.user?.individual_profile && 
-                                `${record.user.individual_profile.nrc }
+                            {record && record?.user?.individual_profile && 
+                                `${record?.user?.individual_profile?.nrc }
                             `}
-                            {record && record.user?.business_profile && record.user.business_profile !== null && 
+                            {record && record?.user?.business_profile && record?.user?.business_profile !== null && 
                                 `${record.user?.business_profile?.registration_number}`
                             }
                        </p>
@@ -181,12 +184,12 @@ const ApplicationsTable = ({user_applications,status}) => {
                     <div className='grid grid-cols-2 border p-2'>
                        <strong>REPAYMENT: </strong>
                        <p>
-                            {record && record.repaymet_period} Months
+                            {record && record?.repaymet_period} Months
                        </p>
                     </div>
                     <div className='grid grid-cols-2 border p-2 rounded-b-md'>
                        <strong>AMOUNT: </strong>
-                       <p>K {record && record.amount}</p>
+                       <p>K {record && record?.amount}</p>
                     </div>
                     <p className='mt-4'>you are about to decline this loan application are you sure you want to proceed?</p>
                     <div className="flex items-center space-x-4 mt-4">

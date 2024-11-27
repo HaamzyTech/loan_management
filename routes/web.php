@@ -55,7 +55,8 @@ Route::middleware('auth')->group(function(){
     Route::patch('/applications/{id}',[LoanApplicationController::class,'edit'])->name('application.submit');
     Route::patch('/approve/{id}',[LoanApplicationController::class,'approveApplication'])->name('application.approve');
     Route::patch('/decline/{id}',[LoanApplicationController::class,'declineApplication'])->name('application.decline');
-    Route::get('/approve/{status}', [LoanApplicationController::class, 'index'])->name('application.approve');
+    Route::get('/approve/{status}', [LoanApplicationController::class, 'index'])->name('application.approved');
+    Route::get('/decline/', [LoanApplicationController::class, 'decline'])->name('application.declined');
 });
 
 Route::middleware('auth')->group(function(){
@@ -67,6 +68,7 @@ Route::middleware('auth')->group(function(){
 
 Route::middleware('auth')->group(function(){
     Route::get('/active-loans',[CreditController::class,'index'])->name('credit.view');
+    Route::get('/paid/', [CreditController::class, 'paidLoans'])->name('credit.paid');
 });
 
 Route::middleware('auth')->group(function(){

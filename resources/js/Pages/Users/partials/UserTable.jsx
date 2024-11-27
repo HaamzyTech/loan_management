@@ -16,7 +16,7 @@ const UserTable = ({employees}) => {
         </thead>
         {employees && employees.length > 0 ? (
             <tbody>
-                {employees.map((record)=>(
+                {employees?.map((record)=>(
                     <tr className="border hover:bg-slate-50" key={record.id}>
                         <td className="p-4">
                         {record && 

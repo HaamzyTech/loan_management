@@ -34,16 +34,16 @@ const PaymentHistory = ({className, credit}) => {
                     <span>Date</span>
                     <span>Amount</span>
                 </div>
-                {credit.repayments && credit.repayments.map(record => (
+                {credit?.repayments && credit?.repayments.map(record => (
                     <div className="grid grid-cols-2 border px-4 py-2">
                         <span>{formatDate(record.date)}</span>
-                        <span>{record.amount}</span>
+                        <span>{record?.amount}</span>
                     </div>
                 ))}
                 <div className="grid grid-cols-2 px-4 py-2">
                     <span className="font-bold text-xl">Total</span>
                     <span className="font-bold text-xl">
-                        {credit.repayments.reduce((sum, item) => sum + Number(item.amount), 0)}
+                        {credit?.repayments?.reduce((sum, item) => sum + Number(item.amount), 0)}
                     </span>
                 </div>
             </div>

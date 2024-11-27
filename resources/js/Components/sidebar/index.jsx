@@ -56,25 +56,27 @@ const Sidebar = ({sidebarOpen, setSidebarOpen }) => {
                     </ResponsiveNavLink>
                 </li>
             )}
+            
+            {user.roles.some(obj => ["admin", "manager"].includes(obj.name)) && (
+                <li className="p-1 hover:bg-gray-100">
+                    <ResponsiveNavLink 
+                        href={route('application.approved',{status:'reviewed'})}
+                        active={route().current('application.approved')}
+                        className="flex items-center space-x-3">
+                        <Check size={20} />
+                        <p>Approve applications</p>
+                    </ResponsiveNavLink>
+                </li>
+            )}
             {user.roles.some(obj => ["admin", "cashier","manager"].includes(obj.name)) && (
                 <li className="p-1 hover:bg-gray-100">
                     <ResponsiveNavLink 
-                        
+                        href={route('application.declined')}
+                        active={route().current('application.declined')}
                         className="flex items-center space-x-3"
                     >
                         <BanIcon size={20} />
                         <p>Declined Applications</p>
-                    </ResponsiveNavLink>
-                </li>
-            )}
-            {user.roles.some(obj => ["admin", "manager"].includes(obj.name)) && (
-                <li className="p-1 hover:bg-gray-100">
-                    <ResponsiveNavLink 
-                        href={route('application.approve',{status:'reviewed'})}
-                        active={route().current('application.approve')}
-                        className="flex items-center space-x-3">
-                        <Check size={20} />
-                        <p>Approve applications</p>
                     </ResponsiveNavLink>
                 </li>
             )}
@@ -92,7 +94,11 @@ const Sidebar = ({sidebarOpen, setSidebarOpen }) => {
             )}
             {user.roles.some(obj => ["admin", "cashier","manager"].includes(obj.name)) && (
                 <li className="p-1 hover:bg-gray-100">
-                    <ResponsiveNavLink className="flex items-center space-x-3">
+                    <ResponsiveNavLink 
+                        href={route('credit.paid')}
+                        active={route().current('credit.paid')}
+                        className="flex items-center space-x-3"
+                    >
                         <Receipt size={20} />
                         <p>Paid Loans</p>
                     </ResponsiveNavLink>

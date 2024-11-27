@@ -1,4 +1,5 @@
 import PrimaryButton from '@/Components/PrimaryButton'
+import Status from './Status'
 
 const Loans = ({loans, setRepayment, setSelectedLoan, setHistory}) => {
     
@@ -18,19 +19,21 @@ const Loans = ({loans, setRepayment, setSelectedLoan, setHistory}) => {
         </thead>
         {loans && loans.length > 0 ? (
             <tbody>
-                {loans.map((record)=>(
-                    <tr className="border hover:bg-slate-50" key={record.id}>
+                {loans?.map((record)=>(
+                    <tr className="border hover:bg-slate-50" key={record?.id}>
                         <td className="p-4">
-                            {record.account.account_number}
+                            {record?.account?.account_number}
                         </td>
-                        <td className="p-4">{record.account.user.name}</td>
-                        <td className="p-4">{record.account.user.email}</td>
-                        <td className="p-4">{record.amount}</td>
-                        <td className="p-4">{record.repayments.reduce((sum, item) => sum + Number(item.amount), 0)}</td>
-                        <td className="p-4">{Number(record.amount) - record.repayments.reduce((sum, item) => sum + Number(item.amount), 0)}</td>
-                        <td className="p-4">{record.status}</td>
+                        <td className="p-4">{record?.account?.user?.name}</td>
+                        <td className="p-4">{record?.account?.user?.email}</td>
+                        <td className="p-4">{record?.amount}</td>
+                        <td className="p-4">{record?.repayments.reduce((sum, item) => sum + Number(item.amount), 0)}</td>
+                        <td className="p-4">{Number(record?.amount) - record?.repayments.reduce((sum, item) => sum + Number(item.amount), 0)}</td>
+                        <td className="p-4">
+                            <Status status={record?.status} />
+                        </td>
                         <td className="p-4 flex flex-col md:flex-row gap-4">
-                            <PrimaryButton 
+                            {record?.status && record?.status !== 'closed' && <PrimaryButton 
                                 onClick={() => {
                                     setSelectedLoan(record)
                                     setRepayment(true)
@@ -38,7 +41,7 @@ const Loans = ({loans, setRepayment, setSelectedLoan, setHistory}) => {
                             }
                             >
                                 Repayments
-                            </PrimaryButton>
+                            </PrimaryButton>}
                             <PrimaryButton
                                 onClick={() => {
                                     setSelectedLoan(record)

@@ -4,6 +4,7 @@ import { SquarePenIcon } from 'lucide-react'
 import Modal from './Modal'
 import EditLoanApplicationForm from '@/Pages/LoanApplication/partials/EditLoanApplicationForm'
 import { formatDate } from '@/lib/utils'
+import ApplicationStatus from './ApplicationStatus'
 
 const Table = ({user_applications, status}) => {
     const [edit,setEdit] = useState(false)
@@ -24,7 +25,9 @@ const Table = ({user_applications, status}) => {
                     <tr className="border hover:bg-slate-50" key={record.id}>
                         <td className="p-4">{formatDate(record.created_at)}</td>
                         <td className="p-4">{record.amount}</td>
-                        <td className="p-4">{record.status}</td>
+                        <td className="p-4">
+                            <ApplicationStatus status={record.status} />
+                        </td>
                         <td className="p-4">
                             <PrimaryButton 
                                 disabled={record.status && record.status !== "submitted"}

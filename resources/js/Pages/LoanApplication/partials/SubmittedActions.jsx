@@ -9,7 +9,7 @@ const SubmittedActions = ({record, setRecord,setEditCreateAccount, setCreateAcco
             <PrimaryButton
                 // disabled={record?.user?.loan_account?.status === 'active'} 
                 onClick={()=>{
-                    setRecord(record.user)
+                    setRecord(record?.user)
                     setEditCreateAccount(true)
                 }}
                 className={`space-x-2 ${record?.user?.loan_account?.status === 'active' ? 'bg-green-500' : 'bg-orange-500'}`}

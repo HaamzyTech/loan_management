@@ -25,6 +25,17 @@ class CreditController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function paidLoans()
+    {
+        return Inertia::render('ActiveLoans/PaidLoans',[
+            'loans' => Credit::with(['application','account.user','repayments'])
+                                ->where('status','closed')->orderBy('created_at','ASC')->get(),
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

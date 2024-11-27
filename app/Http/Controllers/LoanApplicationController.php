@@ -26,6 +26,19 @@ class LoanApplicationController extends Controller
         ]);
     }
 
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function decline()
+    {
+
+        return Inertia::render('LoanApplication/DeclinedApplications',[
+            'applications' => LoanApplication::with(['user.individualProfile','user.businessProfile','user.loanAccount'])->where('status','rejected')->orderBy('created_at','ASC')->get(),
+            // 'status' => $status,
+        ]);
+    }
+
     /**
      * Allow clients to search by how much.
      */
