@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,25 @@ class ProfileController extends Controller
             'user_type' => Auth::user()->type,
             'profile' => $profile,
         ]);
+    }
+
+    /**
+     * Show resource file
+     */
+    public function downloadFile($filePath)
+    {
+        // Check if the file exists
+        if (!Storage::exists($filePath)) {
+            abort(404, 'File not found.');
+        }
+
+        // Optional: Ensure the user has permission
+        if (!auth()->check()) {
+            abort(403, 'Unauthorized access.');
+        }
+
+        // Serve the file as a download
+        return Storage::download($filePath);
     }
 
     /**

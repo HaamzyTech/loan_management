@@ -17,7 +17,7 @@ const ManageApplications = ({applications,status}) => {
             <Head title='Applications' />
             <div className="bg-white shadow sm:rounded-lg sm:p-8">
               <div className="flex items-center justify-between">
-                <SearchInput placeholder={"Search by Name or Applicant ID"} route_path={'application.search'} />
+                {/* <SearchInput placeholder={"Search by Name or Applicant ID"} route_path={'applicant.search'} /> */}
                 <div>
                   
                 </div>
@@ -25,7 +25,7 @@ const ManageApplications = ({applications,status}) => {
 
               <div className="pt-8">
                 <h2 className="text-lg font-medium text-gray-900">
-                   Past Applications
+                   Client Applications
                 </h2>
                 
                 <ApplicationsTable user_applications={applications} status={status}/>

@@ -13,7 +13,7 @@ const UpdateBusinessProfile = ({profile, className = '',}) => {
             registration_number: profile.registration_number,
             business_name: profile.business_name,
             address: profile.address,
-            registration_certificate: null,
+            registration_certificate: profile.registration_certificate,
             type:"business"
         });
 
@@ -21,6 +21,11 @@ const UpdateBusinessProfile = ({profile, className = '',}) => {
         e.preventDefault();
 
         patch(route('account_profile.create'));
+    };
+
+    const handleDownload = () => {
+        // Use Inertia visit to trigger the download
+        window.location.href = route('file.download', { registration_certificate });
     };
 
 
@@ -83,10 +88,14 @@ const UpdateBusinessProfile = ({profile, className = '',}) => {
                     <InputError className="mt-2" message={errors.address} />
                 </div>
 
-                <div>
+                <div className="space-y-4">
                     <InputLabel htmlFor="registration_certificate" value="Registration Certificate" />
 
-                    <TextInput
+                    <button 
+                        onClick={handleDownload}
+                        className="border border-gray-500 px-6 py-2 rounded-lg"
+                    >Download Certificate</button>
+                    {/* <TextInput
                         id="registration_certificate"
                         type="file"
                         className="mt-1 block w-full p-1 border"
@@ -95,7 +104,7 @@ const UpdateBusinessProfile = ({profile, className = '',}) => {
                         onChange={(e) => setData('registration_certificate', e.target.files[0])}
                         required
                         autoComplete="off"
-                    />
+                    /> */}
 
                     <InputError className="mt-2" message={errors.registration_certificate} />
                 </div>

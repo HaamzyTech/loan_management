@@ -27,7 +27,7 @@ const ActiveLoans = ({loans}) => {
 
             <div className="bg-white shadow sm:rounded-lg sm:p-8">
               <div className="flex items-center justify-between">
-                <SearchInput placeholder={"Search by name or id"} route_path={'application.search'}/>
+                {/* <SearchInput placeholder={"Search by name or id"} route_path={'application.search'}/> */}
                 <div>
                   {/* <PrimaryButton className="space-x-2" onClick={setModal}>
                     <Plus/> 

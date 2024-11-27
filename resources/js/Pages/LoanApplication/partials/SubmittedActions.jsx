@@ -26,7 +26,7 @@ const SubmittedActions = ({record, setRecord,setEditCreateAccount, setCreateAcco
                 className="space-x-2"
             >
                 <SquarePenIcon size={15} />
-                <span>Create </span>
+                <span>Create ACC</span>
             </PrimaryButton>
         )}
 

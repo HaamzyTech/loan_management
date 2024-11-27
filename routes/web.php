@@ -42,6 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/profile',[AccountProfileController::class, 'store'])->name('account_profile.create');
+    Route::get('/resource-file/{filePath}',[ProfileController::class,'downloadFile'])->name('file.download');
 });
 
 Route::middleware('auth')->group(function(){
@@ -51,7 +52,7 @@ Route::middleware('auth')->group(function(){
     Route::patch('/apply/{id}', [LoanApplicationController::class, 'update'])->name('application.update');
     
     Route::get('/applications/{status}', [LoanApplicationController::class, 'index'])->name('application.manage');
-    Route::get('/search-applicant', [loanApplicationController::class,'clientSearch'])->name('application.search');
+    Route::get('/search-applicant', [LoanApplicationController::class,'clientSearch'])->name('applicant.search');
     Route::patch('/applications/{id}',[LoanApplicationController::class,'edit'])->name('application.submit');
     Route::patch('/approve/{id}',[LoanApplicationController::class,'approveApplication'])->name('application.approve');
     Route::patch('/decline/{id}',[LoanApplicationController::class,'declineApplication'])->name('application.decline');

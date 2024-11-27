@@ -19,9 +19,7 @@ const DeclinedApplications = ({applications}) => {
             <Head title='Approve Applications' />
             <div className="bg-white shadow sm:rounded-lg sm:p-8">
               <div className="flex items-center justify-between">
-                <TextInput 
-                  placeholder="search"
-                />
+                
                 <div>
                   {/* <PrimaryButton className="space-x-2" onClick={setCreateAccount}>
                     <Plus/> 
