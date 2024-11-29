@@ -52,7 +52,7 @@ const Sidebar = ({sidebarOpen, setSidebarOpen }) => {
                         className="flex items-center space-x-3"
                     >
                         <ListCheck size={20} />
-                        <p>New applications</p>
+                        <p>Cashier</p>
                     </ResponsiveNavLink>
                 </li>
             )}
@@ -64,7 +64,7 @@ const Sidebar = ({sidebarOpen, setSidebarOpen }) => {
                         active={route().current('application.approved')}
                         className="flex items-center space-x-3">
                         <Check size={20} />
-                        <p>Approve applications</p>
+                        <p>Manager</p>
                     </ResponsiveNavLink>
                 </li>
             )}

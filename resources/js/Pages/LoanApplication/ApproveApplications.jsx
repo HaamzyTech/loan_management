@@ -14,7 +14,7 @@ const ApproveApplications = () => {
     <AuthenticatedLayout
               header={
                   <h2 className="text-xl font-semibold leading-tight text-gray-800">
-                      Manage Applications
+                      Cashier Role
                   </h2>
               }
           >
