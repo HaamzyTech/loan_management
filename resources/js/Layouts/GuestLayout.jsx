@@ -9,7 +9,8 @@ export default function GuestLayout({ children }) {
                     {/* <Link href="/">
                         <ApplicationLogo className="h-20 w-20 fill-current text-gray-500" />
                     </Link> */}
-                    <img src='images/money_pile.jpg' alt="JLP Loans" className="w-1/2 pb-8" />
+                    <h2 className="pb-10 font-bold text-center text-xl">JLP Loans</h2>
+                    <img src='images/money_pile.jpg' alt="JLP Loans" className="w-2/3 pb-8" />
                     <h2 className="font-bold text-center text-2xl">Justina Lombe Phiri</h2>
                     <h2 className="font-bold text-center text-2xl">Information and Communications University</h2>
                 </div>
